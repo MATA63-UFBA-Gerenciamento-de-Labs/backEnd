@@ -5,4 +5,6 @@ app = Flask(__name__)
 def home():
     return "Hello World, from Flask!"
 
-    return gera_response(200, "usuario", usuario_json)
+@app.route("/login")
+def login():
+    return "Login realizado"
