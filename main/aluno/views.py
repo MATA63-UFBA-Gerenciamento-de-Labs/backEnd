@@ -1,6 +1,7 @@
-import json
 from . import aluno
+from flask import request
 from models import Usuario
+from main import db
 from response import gera_response
 
 
