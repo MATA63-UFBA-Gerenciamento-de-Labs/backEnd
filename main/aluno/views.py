@@ -53,13 +53,3 @@ def deleta_usuario(id):
     except Exception as e:
         print('Erro', e)
         return gera_response(400, "usuario", {}, "Erro ao deletar")
-
-
-@aluno.route("/")
-def home():
-    return "Hello World, from Flask!"
-
-
-@aluno.route("/login")
-def login():
-    return "Login realizado"
