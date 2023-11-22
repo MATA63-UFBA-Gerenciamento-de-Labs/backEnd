@@ -25,7 +25,7 @@ def seleciona_usuario(id):
 
 # Verificar autorização de RFID
 @aluno.route("/autorizado", methods=["GET"])
-def autorizacao_usuario(rf_id_code):
+def autorizacao_usuario():
     id_request = request.args.get('rf_id_code')
     usuario_objeto = Usuario.query.filter_by(rf_id_code=id_request).first()
     usuario_json = usuario_objeto.to_json()
