@@ -32,7 +32,7 @@ def autorizacao_usuario():
 
     if usuario_objeto:
         authorized_value = usuario_objeto[0]
-        return gera_response(200, "autorizado", {"autorizado": authorized_value})
+        return gera_response(200, "autorizado", authorized_value)
     else:
         return gera_response(404, "error", "Usuario nao encontrado")
 
