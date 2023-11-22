@@ -23,6 +23,20 @@ def seleciona_usuario(id):
     return gera_response(200, "usuario", usuario_json)
 
 
+# Verificar autorização de RFID
+@aluno.route("/autorizado", methods=["GET"])
+def autorizacao_usuario():
+    id_request = request.args.get('rf_id_code')
+    usuario_objeto = Usuario.query.filter_by(rf_id_code=id_request).with_entities(Usuario.autorizado).first()
+
+
+    if usuario_objeto:
+        authorized_value = usuario_objeto[0]
+        return gera_response(200, "autorizado", authorized_value)
+    else:
+        return gera_response(404, "error", "Usuario nao encontrado")
+
+
 # Atualizar
 @aluno.route("/change/<id>", methods=["PUT"])
 def atualiza_usuario(id):

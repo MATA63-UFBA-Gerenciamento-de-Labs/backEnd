@@ -2,8 +2,10 @@ from main import db
 
 # models
 class Usuario(db.Model):
-    id = db.Column(db.String(30), primary_key= True)
-    autorizado = db.Column(db.String(1))
+    id = db.Column(db.String(9), primary_key= True)
+    name = db.Column(db.String(50))
+    rf_id_code = db.Column(db.String(11))
+    autorizado = db.Column(db.Boolean())
 
     def to_json(self):
-        return {"id": self.id, "autorizado": self.autorizado}
+        return {"id": self.id, "name": self.name, "rf_id_code": self.rf_id_code, "autorizado": self.autorizado}
