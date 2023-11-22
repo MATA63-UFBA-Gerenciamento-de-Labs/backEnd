@@ -34,7 +34,7 @@ def autorizacao_usuario():
         authorized_value = usuario_objeto[0]
         return gera_response(200, "autorizado", authorized_value)
     else:
-        return gera_response(404, "error", "Usuario nao encontrado")
+        return gera_response(404, "error", "RFID nao encontrado: {}".format(id_request))
 
 
 # Atualizar
