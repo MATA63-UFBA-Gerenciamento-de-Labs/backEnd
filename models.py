@@ -9,3 +9,6 @@ class Usuario(db.Model):
 
     def to_json(self):
         return {"id": self.id, "name": self.name, "rf_id_code": self.rf_id_code, "autorizado": self.autorizado}
+    
+    def aut_to_json(self):
+        return {"autorizado": self.autorizado,}
