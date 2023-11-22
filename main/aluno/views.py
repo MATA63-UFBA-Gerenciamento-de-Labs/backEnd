@@ -29,9 +29,10 @@ def autorizacao_usuario():
     id_request = request.args.get('rf_id_code')
     usuario_objeto = Usuario.query.filter_by(rf_id_code=id_request).with_entities(Usuario.autorizado).first()
 
+
     if usuario_objeto:
-        usuario_json = usuario_objeto.to_json()
-        return gera_response(200, "usuario", usuario_json)
+        authorized_value = usuario_objeto[0]
+        return gera_response(200, "autorização", {"autorizado": authorized_value})
     else:
         return gera_response(404, "error", "Usuario nao encontrado")
 
