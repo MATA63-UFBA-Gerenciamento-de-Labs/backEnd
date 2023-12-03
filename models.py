@@ -1,4 +1,10 @@
 from main import db
+import enum
+
+class Tipo(enum.Enum):
+    aluno = 0
+    professor = 1
+    tecnico = 2
 
 # models
 class Usuario(db.Model):
@@ -6,6 +12,8 @@ class Usuario(db.Model):
     name = db.Column(db.String(50))
     rf_id_code = db.Column(db.String(11))
     autorizado = db.Column(db.Boolean())
+    cpf = db.Column(db.String(10))
+    tipo = db.Column(db.Enum(Tipo))
 
     def to_json(self):
         return {"id": self.id, "name": self.name, "rf_id_code": self.rf_id_code, "autorizado": self.autorizado}
