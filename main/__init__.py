@@ -25,6 +25,8 @@ def home():
 # import and register Blueprints
 from .aluno import aluno
 from .login import login
+from .usuario import usuario
 
 app.register_blueprint(aluno, url_prefix="/aluno")
 app.register_blueprint(login, url_prefix="/login")
+app.register_blueprint(usuario, url_prefix="/usuario")
