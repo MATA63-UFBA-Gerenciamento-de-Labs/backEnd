@@ -1,6 +1,6 @@
 from . import aluno
 from flask import request
-from models import Usuario
+from models import Usuario, Tipo
 from main import db
 from main.response import create_response
 
@@ -8,7 +8,7 @@ from main.response import create_response
 # Selecionar Tudo
 @aluno.route("/usuarios", methods=["GET"])
 def seleciona_usuarios():
-    usuarios_objetos = Usuario.query.all()
+    usuarios_objetos = Usuario.query.filter_by(tipo=Tipo.aluno).all()
     usuarios_json = [usuario.to_json() for usuario in usuarios_objetos]
 
     return create_response(200, "usuarios", usuarios_json)
