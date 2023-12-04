@@ -25,6 +25,6 @@ class Usuario(db.Model):
             "rf_id_code": self.rf_id_code,
             "autorizado": self.autorizado,
             "cpf": self.cpf,
-            "tipo": self.tipo,
+            "tipo": self.tipo.name,
             "senha": self.senha,
         }
