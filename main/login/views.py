@@ -14,7 +14,7 @@ def login():
         # Check if user exists
         user = Usuario.query.filter_by(cpf=received_cpf).first()
 
-        if user and user.password == received_password:
+        if user and user.senha == received_password:
             return create_response(200, "response", user.to_json())
         else:
             return create_response(401, "response", "unauthorized")

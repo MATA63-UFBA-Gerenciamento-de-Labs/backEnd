@@ -1,9 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-# import and register Blueprints
-from .aluno import aluno
-from .login import login
 
 import os
 
@@ -19,6 +16,10 @@ db = SQLAlchemy(app)
 def home():
     return "Hello World, from Flask!"
 
+
+# import and register Blueprints
+from .aluno import aluno
+from .login import login
 
 app.register_blueprint(aluno, url_prefix="/aluno")
 app.register_blueprint(login, url_prefix="/login")
