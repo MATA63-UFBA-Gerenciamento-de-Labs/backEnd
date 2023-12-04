@@ -17,6 +17,7 @@ class Usuario(db.Model):
     cpf = db.Column(db.String(11))
     tipo = db.Column(db.Enum(Tipo))
     senha = db.Column(db.String(12))
+    email = db.Column(db.String(50))
 
     def to_json(self):
         return {
@@ -27,4 +28,5 @@ class Usuario(db.Model):
             "cpf": self.cpf,
             "tipo": self.tipo.name,
             "senha": self.senha,
+            "email": self.email
         }
