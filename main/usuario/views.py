@@ -36,3 +36,37 @@ def atualizar_dados_usuario():
         print("Erro", e)
         return create_response(400, "usuario", {}, f"Erro ao atualizar cpf {body['cpf']}")
 
+@usuario.route("/criar", methods=["POST"])
+def criar_usuario():
+    body = request.get_json()
+    novo_usuario = Usuario()
+
+    try:
+        if "id" in body:
+            novo_usuario.id = body["id"]
+        if "name" in body:
+            novo_usuario.name = body["name"]
+        if "senha" in body:
+            novo_usuario.senha = body["senha"]
+        if "email" in body:
+            novo_usuario.email = body["email"]
+        if "rf_id_code" in body:
+            novo_usuario.rf_id_code = body["rf_id_code"]
+        if "autorizado":
+            novo_usuario.autorizado = body["autorizado"]
+        if "cpf":
+            novo_usuario.cpf = body["cpf"]
+        if "tipo":
+            novo_usuario.tipo = body["tipo"]
+
+
+        db.session.add(novo_usuario)
+        db.session.commit()
+
+        return create_response(
+            200, "usuario", novo_usuario.to_json(), "Criado com sucesso"
+        )
+    
+    except Exception as e:
+        print("Erro", e)
+        return create_response(400, "usuario", {}, f"Erro ao cadastrar!")
