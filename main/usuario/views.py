@@ -41,9 +41,11 @@ def criar_usuario():
     body = request.get_json()
     novo_usuario = Usuario()
 
+    ultimo_usuario = Usuario.query.order_by(Usuario.id.desc()).first()
+    ultimo_id = ultimo_usuario.id
+    novo_usuario.id = str(int(ultimo_id) + 1)
+
     try:
-        if "id" in body:
-            novo_usuario.id = body["id"]
         if "name" in body:
             novo_usuario.name = body["name"]
         if "senha" in body:
@@ -58,6 +60,7 @@ def criar_usuario():
             novo_usuario.cpf = body["cpf"]
         if "tipo":
             novo_usuario.tipo = body["tipo"]
+
 
 
         db.session.add(novo_usuario)
